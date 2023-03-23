@@ -18,5 +18,18 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+
+  webpack: (config) => {
+    return {
+      ...config,
+      watchOptions: {
+        poll: 1000,
+        ignored: '**/node_modules'
+      },
+      devServer: {
+        port: 3001
+      }
+    }
+  },
 };
 export default config;
