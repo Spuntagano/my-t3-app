@@ -4,9 +4,10 @@ import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
   // eslint-disable-next-line
   const user: any = useUser();
+
+  const { data } = api.posts.getAll.useQuery();
 
   return (
     <>
@@ -22,6 +23,13 @@ const Home: NextPage = () => {
           {/* eslint-disable-next-line */}
           {!!user.isSignedIn && <SignOutButton />}
         </>
+        <div>
+          {data?.map((post) => (
+            <div key={post.id}>
+              {post.content}
+            </div>
+          ))}
+        </div>
       </main>
     </>
   );
