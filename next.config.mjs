@@ -7,6 +7,9 @@
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
+  images: {
+    domains: ["images.clerk.dev"],
+  },
 
   /**
    * If you have the "experimental: { appDir: true }" setting enabled, then you
@@ -25,9 +28,6 @@ const config = {
       watchOptions: {
         poll: 1000,
         ignored: '**/node_modules'
-      },
-      devServer: {
-        port: 3001
       }
     }
   },
